@@ -16,7 +16,11 @@ public class Main {
     }
 
     public static void permutationsWithRepetitions(int n, int[] rep ){
-        if (rep.length > n){
+        int check = 0;
+        for (int repetition : rep) {
+            check += repetition;
+        }
+        if (rep.length > n || check > n){
             System.out.println("Введены некорректные данные.");
         } else {
             double numerator = getFactorial(n);
@@ -29,9 +33,13 @@ public class Main {
     }
 
     public static void combinationsWithoutRepetitions(int n, int m ){
-        double numerator = getFactorial(n);
-        double denominator = getFactorial(m) * getFactorial(n - m);
-        System.out.println(numerator/denominator);
+        if (m > n){
+            System.out.println("Введены некорректные данные.");
+        }else {
+            double numerator = getFactorial(n);
+            double denominator = getFactorial(m) * getFactorial(n - m);
+            System.out.println(numerator / denominator);
+        }
     }
 
     public static void combinationsWithRepetitions(int n, int m){
@@ -52,7 +60,6 @@ public class Main {
     }
 
     public static void placementsWithRepetitions(double n, double m ){
-
         System.out.println("Ответ: " + Math.pow(n,m));
     }
 
